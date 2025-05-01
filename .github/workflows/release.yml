@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-upload-conda:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest]
 
     if: github.repository_owner == 'usask-arg'
 
@@ -41,7 +41,7 @@ jobs:
 
   build_wheel:
     name: Build Wheel
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest]
     if: github.repository_owner == 'usask-arg'
     steps:
       - uses: actions/checkout@v4
@@ -80,7 +80,7 @@ jobs:
           path: dist
 
   upload_wheels:
-      runs-on: ubuntu-latest
+      runs-on: [ubuntu-latest, macos-latest]
       needs: build_wheel
       environment:
         name: pypi
